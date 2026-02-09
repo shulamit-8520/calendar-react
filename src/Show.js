@@ -3,9 +3,9 @@ import Day from "./Day";
 import './calender.css'
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { getEvents } from './EventAPI'
-import {Link,useParams} from "react-router-dom"
+import {useParams} from "react-router-dom"
 
 const Show=()=>{ 
     const IsFirstShow=useParams();
@@ -56,6 +56,7 @@ const Show=()=>{
     }
     useEffect(() => {
         loadEvents();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         }, []);
 
     return(

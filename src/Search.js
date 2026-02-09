@@ -1,8 +1,7 @@
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useRef, useState } from 'react';
-import useAxios from 'axios-hooks'
+import { useRef } from 'react';
 import './Search.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -12,13 +11,8 @@ const Search = (props) => {
     const EndRef=useRef('')
     const navigate = useNavigate();
 
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5102";
-    const [{ data, loading, error }, refetch] = useAxios(`${API_URL}/Event/123`)
-
     const handleSearch = () => {
-        // Logic for searching events
         console.log('Searching for events...')
-        // refetch();
         navigate('/')
     }
 
@@ -61,9 +55,6 @@ const Search = (props) => {
                         </button>
                     </div>
                 </LocalizationProvider>
-
-                {loading && <p className='status-message'>טוען...</p>}
-                {error && <p className='status-message error'>שגיאה בחיפוש</p>}
             </div>
         </div>
     )
