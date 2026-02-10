@@ -5,16 +5,13 @@ import { useNavigate } from 'react-router-dom';
 import {addEvent} from './EventAPI'
 import { useRef, useState } from 'react';
 import moment from 'moment';
-import {Link,useParams} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import { deleteEvent } from './EventAPI';
 // import {v4 as uuidv4} from 'uuid'
 import './calender.css'
 import './Event.css'
 
 import React from 'react'; 
-import { InputText } from 'primereact/inputtext';
-import { InputNumber } from 'primereact/inputnumber';
- 
 const Event = (props) => {
 
   const eventdefault=parseInt(useParams().event, 10);
@@ -54,7 +51,6 @@ const Event = (props) => {
     // localStorage.removeItem('description');
     // localStorage.removeItem('startDate');
     // localStorage.removeItem('endDate');
-    
     // await 
     if(Is_Update)
     {
