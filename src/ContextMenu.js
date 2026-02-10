@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Event from './Event';
 import { deleteEvent } from './EventAPI';
 import { useNavigate } from 'react-router-dom';
 export default function ContextMenu(props) {
@@ -51,22 +50,24 @@ export default function ContextMenu(props) {
         })
 }
   return (
-    <div onContextMenu={handleContextMenu} style={{ cursor: 'context-menu' }}>
-      <ContextComponent></ContextComponent>
-      <Menu
-        open={contextMenu !== null}
-        onClose={handleClose}
-        anchorReference="anchorPosition"
-        anchorPosition={
-          contextMenu !== null
-            ? { top: contextMenu.mouseY, left: contextMenu.mouseX }
-            : undefined
-        }
-      >
-        {props.status==="Event"?<> <MenuItem onClick={($event)=>handleClose("Delete",$event)}>Delete</MenuItem> <MenuItem onClick={($event)=>handleClose("Edit",$event)}>Edit</MenuItem></>
-        :<><MenuItem onClick={($event)=>handleClose("addNewEvent",$event)}>New Event</MenuItem><MenuItem onClick={($event)=>handleClose("gototoday",$event)}>Go to today</MenuItem></>}
-
-      </Menu>
-    </div>
+    <Menu
+      open={contextMenu !== null}
+      onClose={() => handleClose()}
+      anchorReference="anchorPosition"
+      anchorPosition={
+        contextMenu !== null
+          ? { top: contextMenu.mouseY, left: contextMenu.mouseX }
+          : undefined
+      }
+      onContextMenu={(e) => {
+        e.preventDefault();
+        handleClose();
+      }}
+    >
+      <MenuItem onContextMenu={handleContextMenu} onClick={(e) => handleClose("Edit",e)}>עריכה</MenuItem>
+      <MenuItem onContextMenu={handleContextMenu} onClick={(e) => handleClose("Delete",e)}>מחיקה</MenuItem>
+      <MenuItem onContextMenu={handleContextMenu} onClick={(e) => handleClose("addNewEvent",e)}>הוסף אירוע חדש</MenuItem>
+      <MenuItem onContextMenu={handleContextMenu} onClick={(e) => handleClose("gototoday",e)}>חזור להיום</MenuItem>
+    </Menu>
   );
 }

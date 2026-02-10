@@ -1,7 +1,6 @@
-import { display } from "@mui/system";
 import ContextMenu from "./ContextMenu";
-import  moment from "moment/moment"
-import { useEffect, useRef, useState } from "react";
+import moment from "moment/moment"
+import { useEffect, useState } from "react";
 import EventStyle from "./EventStyle";
 import './Day.css'
 
@@ -13,38 +12,31 @@ const Day = (props) => {
    {
     const ev=[]
     props.events.forEach(element => {
-        if((moment(element.startDate).format('dddd DD-MM-YYYY')==props.d)){
+        if((moment(element.startDate).format('dddd DD-MM-YYYY')===props.d)){
             ev.push(<EventStyle e={element}></EventStyle>)}
     });
     setEventsForDay(ev)
-   },[props.d,props.key])
-//    useEffect(()=>
-//    {
-//     const ev=[]
-//     props.events.forEach(element => {
-//         if((moment(element.startDate).format('dddd DD-MM-YYYY')==props.d)){
-//             ev.push(<EventStyle e={element}></EventStyle>)}
-//     });
-//     setEventsForDay(ev)
-//    },[props.key])
+   },[props.d,props.events])
+
    useEffect(()=>
    {
     const ev=[]
     props.events.forEach(element => {
-        if((moment(element.startDate).format('dddd DD-MM-YYYY')==props.d)){
+        if((moment(element.startDate).format('dddd DD-MM-YYYY')===props.d)){
             ev.push(<EventStyle e={element}></EventStyle>)}
     });
     setEventsForDay(ev)
-   },[props.date])
+   },[props.d, props.events])
+
    useEffect(()=>
    {
     const ev=[]
     props.events.forEach(element => {
-        if((moment(element.startDate).format('dddd DD-MM-YYYY')==props.d)){
+        if((moment(element.startDate).format('dddd DD-MM-YYYY')===props.d)){
             ev.push(<EventStyle e={element} func={props.func}></EventStyle>)}
     });
     setEventsForDay(ev)
-   },[props.events])
+   },[props.d, props.events, props.func])
 
 
      const componentToSetMenu = () => <div style={{fontSize: "16px", marginRight:"8px"}}>{props.d}</div>;

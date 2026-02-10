@@ -16,8 +16,7 @@ const Event = (props) => {
 
   const eventdefault=parseInt(useParams().event, 10);
   
-  const Is_Update=eventdefault==NaN?false:true;
-  const EventLSG=eventdefault? localStorage.getItem('event_id'):"";
+  const Is_Update=!isNaN(eventdefault) ? true : false;
   // const personAsObjectAgain = JSON.parse(EventLSG);
   const title=Is_Update?localStorage.getItem('title'):"";
   const decribetions=Is_Update?localStorage.getItem('description'):"";
@@ -30,8 +29,6 @@ const Event = (props) => {
   const [dateEnd, setDateEnd] = useState(end)
   const titleRef = useRef('')
   const descriptionRef = useRef('')
-  const dateStartRef = useRef('')
-  const dateEndRef = useRef('')
   
   const cancel = () => {
     navigate("../Show", { replace: false });
@@ -51,7 +48,6 @@ const Event = (props) => {
     // localStorage.removeItem('description');
     // localStorage.removeItem('startDate');
     // localStorage.removeItem('endDate');
-    // await 
     if(Is_Update)
     {
       deleteing()

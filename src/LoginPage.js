@@ -47,31 +47,6 @@ async function login(user) {
   }
 }
 
-  const checkUserExists = (username, password) => {
-   
- 
-  }
-
-//   const loadUserEvents = (username) => {
-//     const [{ data, loading, error }, refetch] = useAxios(
-//         `http://localhost:5102/User/Login`//${user.userId}`
-//     )
-
-//  }
-// }
-// function login(userid,psw) {
-//   try {
-//       axios.post('http://localhost:5102/User/Login', { userid, psw })
-//           .then((response) => {
-//               if (response.data.statusCode === 200)
-//                   console.log(response);
-//           })
-//   }
-//   catch (error) {
-//       console.log(error);
-//   }
-
-// }
   return (
     <div className='log'>
       <h1>כניסה למערכת</h1>
@@ -102,6 +77,4 @@ async function login(user) {
     </div>
   );
 }
-
 export default LoginPage;
-
