@@ -41,7 +41,7 @@ export default function ContextMenu(props) {
     else if(messege==="addNewEvent"){props.AEvent(e.target.value)}
     else if(messege==="Delete"){deleteing()}
   };
-  const ContextComponent = props.contextComponent;
+  //const ContextComponent = props.contextComponent;
   const deleteing = async()=>{
     console.log(props.e);
     await deleteEvent(props.e.eventId).then((response)=>
